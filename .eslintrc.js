@@ -25,7 +25,7 @@ module.exports = {
         'indent': ['error', 4, { "SwitchCase": 2, "ignoredNodes": ["PropertyDefinition"] }],
         'quotes': [2, 'single', { allowTemplateLiterals: true, avoidEscape: true }],
         'semi': ['error', 'never'],
-        'max-len': [1, { code: 100 }],
+        'max-len': [1, { code: 180 }],
         'prettier/prettier': ['error', { 'endOfLine': 'auto' }],
         'lines-between-class-members': ["error", "always"],
         'no-multiple-empty-lines': ["error", { "max": 2, "maxEOF": 0 }]
