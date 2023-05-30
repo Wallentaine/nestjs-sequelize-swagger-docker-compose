@@ -11,11 +11,15 @@ export class UsersService {
     constructor(@InjectModel(User) private userRepository: typeof User, private roleService: RolesService) {}
 
     async createUser(dto: CreateUserDto) {
-        const user = await this.userRepository.create(dto)
-        const role = await this.roleService.getRoleByValue('USER')
-        await user.$set('roles', [role.id])
-        user.roles = [role]
-        return user
+        try {
+            const user = await this.userRepository.create(dto)
+            const role = await this.roleService.getRoleByValue('USER')
+            await user.$set('roles', [role.id])
+            user.roles = [role]
+            return user
+        } catch (error) {
+            throw new HttpException('Такой пользователь уже существует', HttpStatus.BAD_REQUEST)
+        }
     }
 
     async getAllUsers() {
